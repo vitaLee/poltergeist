@@ -259,6 +259,10 @@ class Poltergeist.Browser
     this.node(page_id, id).dragBy(x, y)
     this.sendResponse(true)
 
+  drag_over: (page_id, id, other_id) ->
+    this.node(page_id, id).dragOver this.node(page_id, other_id)
+    this.sendResponse(true)
+
   trigger: (page_id, id, event) ->
     this.node(page_id, id).trigger(event)
     this.sendResponse(event)

@@ -189,6 +189,10 @@ module Capybara::Poltergeist
       command 'drag_by', page_id, id, x, y
     end
 
+    def drag_over(page_id, id, other_id)
+      command 'drag_over', page_id, id, other_id
+    end
+
     def select(page_id, id, value)
       command 'select', page_id, id, value
     end
@@ -362,12 +366,12 @@ module Capybara::Poltergeist
       keys.map do |key|
         case key
         when Array
-          # [:Shift, "s"] => { modifier: "shift", key: "S" }   
+          # [:Shift, "s"] => { modifier: "shift", key: "S" }
           # [:Ctrl, :Left] => { modifier: "ctrl", key: :Left }
           # [:Ctrl, :Shift, :Left] => { modifier: "ctrl,shift", key: :Left }
           letter = key.pop
           symbol = key.map { |k| k.to_s.downcase }.join(',')
-          
+
           { modifier: symbol.to_s.downcase, key: letter.capitalize }
         when Symbol
           { key: key } # Return a known sequence for PhantomJS
