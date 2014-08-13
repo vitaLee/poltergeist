@@ -53,5 +53,15 @@ class Poltergeist.Node
     @page.mouseEvent('mousedown', position.x,      position.y)
     @page.mouseEvent('mouseup',   otherPosition.x, otherPosition.y)
 
+  dragOver: (other) ->
+    this.scrollIntoView()
+
+    position      = this.mouseEventPosition()
+    otherPosition = other.mouseEventPosition()
+
+    @page.mouseEvent('mousedown', position.x,      position.y)
+    @page.mouseEvent('mousemove', otherPosition.x, otherPosition.y)
+
+
   isEqual: (other) ->
     @page == other.page && this.isDOMEqual(other.id)

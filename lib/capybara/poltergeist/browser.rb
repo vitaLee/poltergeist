@@ -183,6 +183,10 @@ module Capybara::Poltergeist
       command 'drag', page_id, id, other_id
     end
 
+    def drag_over(page_id, id, other_id)
+      command 'drag_over', page_id, id, other_id
+    end
+
     def select(page_id, id, value)
       command 'select', page_id, id, value
     end

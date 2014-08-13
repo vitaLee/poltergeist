@@ -132,6 +132,10 @@ module Capybara::Poltergeist
       command :drag, other.id
     end
 
+    def drag_over(other)
+      command :drag_over, other.id
+    end
+
     def trigger(event)
       command :trigger, event
     end
